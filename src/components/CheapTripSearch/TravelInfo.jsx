@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import locations from '../../cheapTripData/locations.json'
-import additional_information from '../../cheapTripData/inner_jsons/80001.json'
+import dynamic from 'next/dynamic';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {resultItemStyle} from "../SearchResult/style";
 import {Box, Button, Link, Typography} from "@material-ui/core";
@@ -9,6 +9,9 @@ import Modal from '@mui/material/Modal';
 import s from './cheaptrip.module.css'
 
 function TravelInfo({travelInfo}) {
+    debugger
+    let additional_information = dynamic(() => import(`../../cheapTripData/inner_jsons/${travelInfo.id}.json`)) ;
+    console.dir(travelInfo.id);
     const style = useMediaQuery('(max-width:650px)')
         ? resultItemStyle.sm
         : resultItemStyle.lg

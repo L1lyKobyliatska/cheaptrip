@@ -31,10 +31,11 @@ function RouteCard({route}) {
         // })
         console.log(tempKeys)
         let temp = []
-        tempKeys.map(key => {
+        tempKeys.map((key, index) => {
             temp.push(directRoutes[key])
+            temp[index].id = key
         })
-        console.log(temp)
+        console.dir(temp)
         setTravelInfo(temp)
     }, [directRoutes])
 
